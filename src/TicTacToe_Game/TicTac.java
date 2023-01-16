@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class TicTac {
+public class TicTac extends JFrame implements ActionListener{
 
     private JFrame frame;
 
@@ -32,7 +32,9 @@ public class TicTac {
     private int b9 = 10;
     private int i = 0;
 
-    private JLabel scorePlayerX;
+    private JLabel playerX;
+    private JLabel playerO;
+
 
 
     public static void main(String[] args) {
@@ -53,6 +55,12 @@ public class TicTac {
         initialize();
     }
 
+    public void gameScore() {
+        playerX.setText(String.valueOf(xCount));
+        playerO.setText(String.valueOf(oCount));
+    }
+
+
 
     public void winnerMessage(String player){
         JOptionPane.showMessageDialog(
@@ -70,48 +78,49 @@ public class TicTac {
         if(b1==1 && b2==1 && b3==1) {
             winnerMessage("X");
             xCount++;
-            scorePlayerX = new JLabel();
+//            scorePlayerX = new JLabel();
 //            scorePlayerX.setText(String.valueOf(xCount));
-            scorePlayerX.setText(""+xCount);
+//            scorePlayerX.setText(""+xCount);
+            gameScore();
         }
 
         else if(b4==1 && b5==1 && b6==1) {
             winnerMessage("X");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
         else if(b7==1 && b8==1 && b9==1) {
             winnerMessage("X");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
 
         else if(b1==1 && b4==1 && b7==1) {
             winnerMessage("X");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
         else if(b2==1 && b5==1 && b7==1) {
             winnerMessage("X");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+//            scorePlayerX.setText(String.valueOf(xCount));
         }
 
         else if(b3==1 && b6==1 && b9==1) {
             winnerMessage("X");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+//            scorePlayerX.setText(String.valueOf(xCount));
         }
         else if(b1==1 && b5==1 && b9==1) {
             winnerMessage("X");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
 
         else if(b3==1 && b5==1 && b7==1) {
             winnerMessage("X");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
 
 
@@ -120,46 +129,46 @@ public class TicTac {
         else if(b1==0 && b2==0 && b3==0) {
             winnerMessage("O");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
 
         else if(b4==0 && b5==0 && b6==0) {
             winnerMessage("O");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
         else if(b7==0 && b8==0 && b9==0) {
             winnerMessage("O");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
 
         else if(b1==0 && b4==0 && b7==0) {
             winnerMessage("O");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
         else if(b2==0 && b5==0 && b7==0) {
             winnerMessage("O");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
 
         else if(b3==0 && b6==0 && b9==0) {
             winnerMessage("O");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
         else if(b1==0 && b5==0 && b9==0) {
             winnerMessage("O");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
 
         else if(b3==0 && b5==0 && b7==0) {
             winnerMessage("O");
             xCount++;
-            scorePlayerX.setText(String.valueOf(xCount));
+            playerX.setText(String.valueOf(xCount));
         }
         else if(i==9) {
             JOptionPane.showMessageDialog(frame, "No Player Wins : ", "Winners Window", JOptionPane.INFORMATION_MESSAGE);
@@ -495,6 +504,12 @@ public class TicTac {
             public void actionPerformed(ActionEvent e) {
                 frame = new JFrame();
                 if(JOptionPane.showConfirmDialog(frame, "Confirm, Do You Want To Reset ?", "Reset Window", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION) {
+                    JOptionPane.showMessageDialog(
+                            frame,
+                            "You Have Successfully Reset",
+                            "Reset Successful",
+                            JOptionPane.ERROR_MESSAGE
+                    );
                 }
             }
         });
@@ -517,6 +532,11 @@ public class TicTac {
             }
         });
 
+
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }
